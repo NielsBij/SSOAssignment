@@ -21,9 +21,9 @@ namespace SSOAssignmentOAuth.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult PoCApp()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "The PoC App";
 
             return View();
         }
