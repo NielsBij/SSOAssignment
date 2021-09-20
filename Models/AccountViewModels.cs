@@ -60,6 +60,9 @@ namespace SSOAssignmentOAuth.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [Display(Name = "Your password got reset, please log in again")]
+        public bool PasswordGotReset { get; set; }
     }
 
     public class RegisterViewModel

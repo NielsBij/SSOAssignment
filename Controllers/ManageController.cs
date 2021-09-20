@@ -238,7 +238,8 @@ namespace SSOAssignmentOAuth.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                return RedirectToAction("LogIn", "Account", new { Message = AccountController.AccountMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
             return View(model);

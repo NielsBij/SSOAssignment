@@ -66,8 +66,17 @@ namespace SSOAssignmentOAuth.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl, AccountMessageId? message)
         {
+            if (message == AccountMessageId.ChangePasswordSuccess)
+            {
+                model.PasswordGotReset = true;
+            }
+            else
+            {
+                model.PasswordGotReset = false;
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -481,5 +490,11 @@ namespace SSOAssignmentOAuth.Controllers
             }
         }
         #endregion
+
+        public enum AccountMessageId
+        {
+            ChangePasswordSuccess,
+            Error
+        }
     }
 }
